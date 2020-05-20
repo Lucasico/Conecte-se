@@ -12,7 +12,7 @@ class AuthController extends Action{
     public function autenticar(){
        $usuario = Container::getModel('Usuario');
        $usuario->__set('email',$_POST['email']);
-       $usuario->__set('senha',$_POST['senha']);
+       $usuario->__set('senha',md5($_POST['senha']));
       
        $usuario->autenticar();
 
@@ -25,9 +25,8 @@ class AuthController extends Action{
        }else{
             header('Location: /?login=erro');
        }
-     
     }
-
+    //que função
     public function sair(){
         session_start();
         session_destroy();

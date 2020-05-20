@@ -9,15 +9,29 @@ use MF\Model\Container;
 
 class AppController extends Action{
     public function timeline(){
+        $this->validaAutentificacao();
+            //recuperação dos tweets
+        $tweet = Container::getModel('Tweet');
+        $tweet->__set('id_usuario',$_SESSION['id']);
+        $tweets = $tweet->getAll();
+        $this->view->tweets = $tweets; 
+        $this->render('timeline');
+    }
+
+    public function tweet(){
+        $this->validaAutentificacao();
+        $tweet = Container::getModel('Tweet');
+        $tweet->__set('tweet', $_POST['tweet']);
+        $tweet->__set('id_usuario', $_SESSION['id']);
+        $tweet->salvar();
+        header('Location: /timeline');  
+    }
+
+    public function validaAutentificacao(){
         session_start();
-        if($_SESSION['id'] != '' && $_SESSION['nome'] != ''){
-           $this->render('timeline');
-        }else{
+        if(!isset($_SESSION['id']) || $_SESSION['id'] == '' || !isset($_SESSION['nome']) || $_SESSION['nome'] == ''){
             header('Location: /?login=erro');
         }
-
-
-       
     }
 }
 
