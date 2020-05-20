@@ -10,7 +10,7 @@ use MF\Model\Container;
 class AppController extends Action{
     public function timeline(){
         $this->validaAutentificacao();
-            //recuperação dos tweets
+        //recuperação dos tweets
         $tweet = Container::getModel('Tweet');
         $tweet->__set('id_usuario',$_SESSION['id']);
         $tweets = $tweet->getAll();
