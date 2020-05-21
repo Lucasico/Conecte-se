@@ -8,6 +8,17 @@ use MF\Controller\Action;
 use MF\Model\Container;
 
 class AppController extends Action{
+    public function dadosGeraisUsuario(){
+        $usuario = Container::getModel('Usuario');
+        $usuario->__set('id',$_SESSION['id']);
+        $dadosGerais = [
+            'InfoUsuario' =>   $this->view->info_usuario =  $usuario->getInfoUsuario(),
+            'TotaolTweets' => $this->view->total_tweets =  $usuario->getTotalTweets(),
+            'TotalSeguindo' => $this->view->total_seguindo =  $usuario->getTotalSeguindo(),
+            'TotalSeguidores' => $this->view->total_seguidores =  $usuario->getTotalSeguindores()
+        ];
+        return $dadosGerais;
+    }
     public function timeline(){
         $this->validaAutentificacao();
         //recuperação dos tweets
@@ -16,6 +27,9 @@ class AppController extends Action{
         $tweets = $tweet->getAll();
         //uso o render quando desejo renderizar alguma infor dinamica pra view
         $this->view->tweets = $tweets; 
+
+        $usuario = Container::getModel('Usuario');
+        $this->view->dadosGeraisUsuario = $this->dadosGeraisUsuario();
         //metodo | ação
         $this->render('timeline');
     }
@@ -48,7 +62,9 @@ class AppController extends Action{
             $usuarios = $usuario->getAll();
         }
         //uso o render quando desejo renderizar alguma infor dinamica pra view
+
         $this->view->usuarios = $usuarios;
+        $this->view->dadosGeraisUsuario = $this->dadosGeraisUsuario();
         //metodo | ação
         $this->render('quemSeguir');
     }
