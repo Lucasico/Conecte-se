@@ -14,7 +14,9 @@ class AppController extends Action{
         $tweet = Container::getModel('Tweet');
         $tweet->__set('id_usuario',$_SESSION['id']);
         $tweets = $tweet->getAll();
+        //uso o render quando desejo renderizar alguma infor dinamica pra view
         $this->view->tweets = $tweets; 
+        //metodo | ação
         $this->render('timeline');
     }
 
@@ -24,6 +26,7 @@ class AppController extends Action{
         $tweet->__set('tweet', $_POST['tweet']);
         $tweet->__set('id_usuario', $_SESSION['id']);
         $tweet->salvar();
+         //rota
         header('Location: /timeline');  
     }
 
@@ -40,12 +43,31 @@ class AppController extends Action{
         $usuarios = array();
         if($pesquisarPor != ''){
             $usuario = Container::getModel('Usuario');
+            $usuario->__set('id',$_SESSION['id']);
             $usuario->__set('nome',$pesquisarPor);
             $usuarios = $usuario->getAll();
         }
-
+        //uso o render quando desejo renderizar alguma infor dinamica pra view
         $this->view->usuarios = $usuarios;
+        //metodo | ação
         $this->render('quemSeguir');
+    }
+
+    public function acao(){
+        $this->validaAutentificacao();
+        $acao = isset($_GET[ 'acao' ]) ? $_GET['acao'] : '';
+        $id_usuario_seguindo = isset($_GET[ 'id_usuario' ]) ? $_GET['id_usuario'] : '';
+        $usuario = Container::getModel('Usuario');
+        //para que o usuario em autenticado na sessão, possa seguir quem ele quer
+        $usuario->__set('id',$_SESSION['id']);
+        if($acao === 'seguir'){
+            $usuario->seguirUsuario($id_usuario_seguindo);
+        }else if($acao === 'deixar_de_seguir'){
+            $usuario->deixarSeguirUsuario($id_usuario_seguindo);
+        }
+        //rota
+        header('Location: /quem_seguir');
+       
     }
 }
 
