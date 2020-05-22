@@ -8,7 +8,7 @@
 	  	<a class="menuItem" href="/sair">
 	  		Sair
 	  	</a>
-			<img src="/img/twitter_logo.png" class="menuIco" />
+		  <img src="/img/logo.png"style="width: 3rem;"class="menuIco" />
 	  </div>
 	</div>
 </nav>
@@ -19,11 +19,9 @@
 		<div class="col-md-3">
 
 			<div class="perfil">
-				<div class="perfilTopo">
+				<!--<div class="perfilTopo"></div>-->
 
-				</div>
-
-				<div class="perfilPainel">
+				<div class="perfilPainel position-fixed">
 					
 					<div class="row mt-2 mb-2">
 						<div class="col mb-2">
@@ -48,6 +46,10 @@
 							<span class="perfilPainelItemValor"><?=$this->view->dadosGeraisUsuario['TotalSeguidores']['total_seguidores']?></span>
 						</div>
 					</div>
+					<!-- Button trigger modal -->
+					<button type="button" class="btn col" data-toggle="modal" data-target="#exampleModalCenter"  style=" background-color:rgb(253, 126, 20); color:white;">
+						Dados do usuário
+					</button>
 
 				</div>
 			</div>
@@ -64,7 +66,7 @@
 								<div class="input-group mb-3">
 									<input type="text" name="pesquisarPor" class="form-control" placeholder="Quem você está procurando?">
 									<div class="input-group-append">
-										<button class="btn btn-primary" type="submit">Procurar</button>
+										<button class="btn" type="submit" style=" background-color:rgb(253, 126, 20); color:white;">Procurar</button>
 									</div>
 								</div>
 							</form>
@@ -105,3 +107,43 @@
 		</div>
 	</div>
 </div>
+<!--modal-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Dados de usuário</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+	  <form action="#" method="POST">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nome:</label>
+            <input type="text" class="form-control" id="recipient-name" required="">
+		  </div>
+		  <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Email:</label>
+            <input type="email" class="form-control" id="recipient-name" required="">
+		  </div>
+		  <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nova Senha:</label>
+            <input type="password" class="form-control" placeholder="Senha" id="recipient-name" required="">
+		  </div>
+		  <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Confirmar Senha:</label>
+            <input type="password" class="form-control" id="recipient-name" placeholder="Senha" required="">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Alterar</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+

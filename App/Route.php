@@ -50,6 +50,12 @@ class Route extends Bootstrap {
 			'action' => 'tweet'
 		);
 
+		$routes['deletaTweet'] = array(
+			'route' => '/deleta_tweet',
+			'controller' => 'AppController',
+			'action' => 'deleta_tweet'
+		);
+
 		$routes['quem_seguir'] = array(
 			'route' => '/quem_seguir',
 			'controller' => 'AppController',
@@ -60,6 +66,12 @@ class Route extends Bootstrap {
 			'route' => '/acao',
 			'controller' => 'AppController',
 			'action' => 'acao'
+		);
+
+		$routes['acaoTweet'] = array(
+			'route' => '/acao_tweet',
+			'controller' => 'AppController',
+			'action' => 'acaoTweet'
 		);
 
 		$this->setRoutes($routes);

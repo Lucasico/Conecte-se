@@ -27,12 +27,12 @@ h2 {
 }
 
 .banner {
-	height: 100%;
-	background-color: #1da1f2;
+    height: 100%;
+	background-color:rgb(253, 126, 20);
 }
 
 .title {
-	color: #1da1f2;
+    color:rgb(253, 126, 20);
 	font-size: 27px;
     line-height: 32px;
 }
@@ -82,7 +82,7 @@ h2 {
 .menuItem, .menuItem:hover {
     font-size: 13px;
     font-weight: bold;
-    color: #1DA1F2;
+    color:rgb(253, 126, 20);
     text-decoration: none;
     margin-right: 25px;
 
@@ -109,7 +109,7 @@ h2 {
 
 .perfilTopo {
     height: 95px;
-    background-color: #1DA1F2
+    background-color:rgb(253, 126, 20);
 }
 
 .perfilPainel {
@@ -124,7 +124,7 @@ h2 {
 }
 
 .perfilPainelItem  {
-    color: #657786;
+    color:rgb(253, 126, 20);
     font-size: 12px;
     font-weight: bold;
     letter-spacing: .02em;
@@ -139,7 +139,7 @@ h2 {
     font-weight: bold;
     padding-top: 3px;
     transition: color .15s;
-    color: #1DA1F2 !important;
+    color:rgb(253, 126, 20);
 }
 
 .tweetBox {
@@ -156,7 +156,7 @@ h2 {
     position: relative;
     margin-bottom: 10px;
     display: block;
-    width: 100%;
+    width:20%;
     padding-right: 10px;
     padding-left: 10px;
     padding-bottom: 10px;
@@ -169,7 +169,7 @@ h2 {
 }
 
 .quemSeguirTxt, .quemSeguirTxt:hover {
-    color: #1DA1F2;
+    color:rgb(253, 126, 20);
     text-decoration: none;
     font-size: 12px;
     line-height: 16px;

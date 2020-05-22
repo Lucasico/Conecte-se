@@ -19,6 +19,7 @@ class AppController extends Action{
         ];
         return $dadosGerais;
     }
+    
     public function timeline(){
         $this->validaAutentificacao();
         //recuperação dos tweets
@@ -37,11 +38,35 @@ class AppController extends Action{
     public function tweet(){
         $this->validaAutentificacao();
         $tweet = Container::getModel('Tweet');
-        $tweet->__set('tweet', $_POST['tweet']);
+        $tweet->__set('tweet', $tweet->validaTwitter($_POST['tweet']));
         $tweet->__set('id_usuario', $_SESSION['id']);
         $tweet->salvar();
          //rota
         header('Location: /timeline');  
+    }
+
+    public function deleta_tweet(){
+        $this->validaAutentificacao();
+        $delete = isset($_POST['tweet_id']) ? $_POST['tweet_id'] : '';
+        $tweet = Container::getModel('Tweet');
+        $tweet->deletaTweet($delete);
+        header('Location: /timeline');
+
+    }
+
+    public function acaoTweet(){
+        $this->validaAutentificacao();
+      
+        $acao = isset($_GET['acao']) ? $_GET['acao'] : '';
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
+        $tweet = Container::getModel('Tweet');
+        if($acao ==='curtir'){
+           $tweet->curtirTweet($id);
+           header('Location: /timeline');
+        }else if($acao === 'naoCurtir'){
+           $tweet->naoCurtirTweet($id);
+           header('Location: /timeline');
+        }
     }
 
     public function validaAutentificacao(){
