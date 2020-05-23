@@ -54,6 +54,10 @@ class AppController extends Action{
 
     }
 
+    public function alterarTweet(){
+        echo 'chegou aqui';
+    }
+
     public function acaoTweet(){
         $this->validaAutentificacao();
       
@@ -111,5 +115,4 @@ class AppController extends Action{
        
     }
 }
-
 ?>

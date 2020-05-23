@@ -26,6 +26,12 @@ class Route extends Bootstrap {
 			'action' => 'registrar'
 		);
 
+		$routes['alterarRegistro'] = array(
+			'route' => '/registrar/alterar',
+			'controller' => 'indexController',
+			'action' => 'alterarRegistro'
+		);
+
 		$routes['autenticar'] = array(
 			'route' => '/autenticar',
 			'controller' => 'AuthController',
@@ -54,6 +60,12 @@ class Route extends Bootstrap {
 			'route' => '/deleta_tweet',
 			'controller' => 'AppController',
 			'action' => 'deleta_tweet'
+		);
+
+		$routes['alterarTweet'] = array(
+			'route' => '/alterar_tweet',
+			'controller' => 'AppController',
+			'action' => 'alterarTweet'
 		);
 
 		$routes['quem_seguir'] = array(

@@ -45,6 +45,24 @@ class Usuario extends Model{
         return $valida;
     }
 
+    //alterarRegistro
+    public function alterarRegistro(){
+       
+        $queryUpdate = "update usuarios 
+                        set     
+                            nome = :nome,
+                            email = :email,
+                            senha = :senha 
+                        where   
+                            id = :id";
+        $stmt = $this->db->prepare($queryUpdate);
+        $stmt->bindValue(':id',$this->__get('id'));
+        $stmt->bindValue(':nome',$this->__get('nome'));
+        $stmt->bindValue(':email',$this->__get('email'));
+        $stmt->bindValue(':senha',$this->__get('senha'));
+        $stmt->execute();
+        return true;
+    }
     public function getUsuarioPorEmail(){
         $query = 'select nome, email from usuarios where email = :email';
         $stmt = $this->db->prepare($query);
@@ -120,7 +138,7 @@ class Usuario extends Model{
 
     //informações de usuario
     public function getInfoUsuario(){
-        $query = 'select nome from usuarios where  id = :id_usuario';
+        $query = 'select id,nome,email from usuarios where  id = :id_usuario';
         $stmt = $this->db->prepare($query);
         $stmt->bindValue(':id_usuario',$this->__get('id'));
         $stmt->execute();

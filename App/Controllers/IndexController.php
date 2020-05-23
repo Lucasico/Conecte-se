@@ -46,6 +46,21 @@ class IndexController extends Action {
 		
 	}
 
+	public function alterarRegistro(){
+		if( ( empty($_POST['senha']) || empty($_POST['confirmaSenha']) ) || ( $_POST['senha'] != $_POST['confirmaSenha'] ) ){
+			header('Location: ../timeline?senhasDivergentes=true');
+		}
+		$usuario = Container::getModel('Usuario');
+		$usuario->__set('id',$_POST['usuario_id']);
+		$usuario->__set('nome',$_POST['nome']);
+		$usuario->__set('email',$_POST['email']);
+		$usuario->__set('senha',md5($_POST['senha']));
+		$usuario->alterarRegistro();
+		header('Location:../timeline');
+
+		
+	}
+
 }
 
 

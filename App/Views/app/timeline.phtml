@@ -51,14 +51,17 @@
 					<button type="button" class="btn  col" data-toggle="modal" data-target="#exampleModalCenter" style=" background-color:rgb(253, 126, 20); color:white;">
 						Dados do usuário
 					</button>
-
 				</div>
+			
 			</div>
-
+			
 		</div>
 
 		<div class="col-md-6">
 			<div class="row mb-2">
+					<?php if(isset($_GET['senhasDivergentes'])) { ?>
+						<span class = "text text-danger" style="color: red">Senha e confirmar senha divergentes, por favor tente novamente!</span>
+					<?php } ?>
 				<div class="col tweetBox">
 					<form action="/tweet" method="post">
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tweet"></textarea>
@@ -66,7 +69,6 @@
 						<div class="col mt-2 d-flex justify-content-end">
 							<button type="submit" class="btn" style=" background-color:rgb(253, 126, 20); color:white;">Tweet</button>
 						</div>
-
 					</form>
 				</div>
 			</div>
@@ -113,9 +115,9 @@
 							</form>
 							<!-- Button trigger modal -->
 							<div class="col d-flex justify-content-end">
-							<button type="button" class="btn" data-toggle="modal" data-target="#modalTweet" style=" background-color:rgb(253, 126, 20); color:white;">
-								<small> Alterar </small>
-							</button>
+							
+							<a href="#?twitter=<?=$tweet['id']?>">
+							</a>
 							</div>
 							
 						<?php }?>
@@ -149,22 +151,24 @@
         </button>
       </div>
       <div class="modal-body">
-	  <form action="#" method="POST">
+	  <?php print_r($this->view->info_usuario)?>
+	  <form action="/registrar/alterar" method="POST">
+	  <input type="hidden" name="usuario_id" value="<?=$this->view->info_usuario['id']?>">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nome:</label>
-            <input type="text" class="form-control" id="recipient-name" required="">
+            <input type="text" name="nome" class="form-control" id="recipient-name" required="" value="<?=$this->view->info_usuario['nome']?>">
 		  </div>
 		  <div class="form-group">
             <label for="recipient-name" class="col-form-label">Email:</label>
-            <input type="email" class="form-control" id="recipient-name" required="">
+            <input type="email" name="email" class="form-control" id="recipient-name" required="" value="<?=$this->view->info_usuario['email']?>">
 		  </div>
 		  <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nova Senha:</label>
-            <input type="password" class="form-control" placeholder="Senha" id="recipient-name" required="">
+            <input type="password" name="senha" class="form-control" placeholder="Senha" id="recipient-name" required="">
 		  </div>
 		  <div class="form-group">
             <label for="recipient-name" class="col-form-label">Confirmar Senha:</label>
-            <input type="password" class="form-control" placeholder="Senha" id="recipient-name" required="">
+            <input type="password" name="confirmaSenha" class="form-control" placeholder="Confirma Senha" id="recipient-name" required="">
 		  </div>
 		  <button type="submit" class="btn" style="background-color:rgb(253, 126, 20); color:white">Alterar</button>
         </form>
@@ -176,20 +180,22 @@
     </div>
   </div>
 </div>
-
 <!--modal de tweet-->
-<!--modal-->
 <div class="modal fade" id="modalTweet" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
+	  <?=$tweet['id']?>">
         <h5 class="modal-title" id="exampleModalLongTitle">Informação do Tweet</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+		
       </div>
       <div class="modal-body">
-	  <form action="#" method="POST">
+	  
+	  <form action="#" method="">
+	  
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Tweet:</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="tweet"></textarea>
@@ -199,7 +205,6 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-       
       </div>
     </div>
   </div>
