@@ -26,5 +26,7 @@
 8. Dados com contagem de publicações, seguidores e seguindo
 ![login](https://user-images.githubusercontent.com/43521043/82764773-bf41fb00-9de7-11ea-9653-a56f9c21636a.PNG)
 ![2](https://user-images.githubusercontent.com/43521043/82764825-39727f80-9de8-11ea-85e7-b4d10e6cddf0.PNG)
+![3](https://user-images.githubusercontent.com/43521043/82764869-92421800-9de8-11ea-8214-37d08bd91e8f.PNG)
+
 
 
