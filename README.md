@@ -24,6 +24,5 @@
 6. timeline com suas publicações e de seus amigos
 7. Like e Deslike em publicação
 8. Dados com contagem de publicações, seguidores e seguindo
-<br>
 ![login](https://user-images.githubusercontent.com/43521043/82764773-bf41fb00-9de7-11ea-9653-a56f9c21636a.PNG)
 
