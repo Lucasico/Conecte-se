@@ -23,3 +23,4 @@
 5. Seguir e deixar de seguir outro usuario 
 6. timeline com suas publicações e de seus amigos
 7. Like e Deslike em publicação
+8. Dados com contagem de publicações, seguidores e seguindo
