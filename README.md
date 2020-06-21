@@ -1,6 +1,6 @@
 # Conecte-se
 
-## Pré-requitos
+## Pré-requisitos
 1. PHP na versão 7 ou superior: [Download](https://www.php.net/downloads.php)
 2. Composer: [Download](https://getcomposer.org/download/)
 3. MySQL: [Download](https://www.mysql.com/downloads/)
